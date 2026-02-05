@@ -1,0 +1,6 @@
+
+    Operating System: win32
+    Total RAM: 16 GB
+    Free RAM: 7 GB
+    Hostname: SAIGADDAM
+    

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced Calculator</title>
+</head>
+<body>
+  <h2>Enter Values</h2>
+
+  A: <input type="number" id="a"><br><br>
+  B: <input type="number" id="b"><br><br>
+
+  <button onclick="doAdd()">Addition</button>
+  <button onclick="doSub()">Subtraction</button>
+  <button onclick="doMul()">Multiplication</button>
+  <button onclick="doDiv()">Division</button>
+  
+  <br><br>
+  <button onclick="doLog()">Log (base 10 of A)</button>
+  <button onclick="doLog()">Log (base 10 of B)</button>
+  <button onclick="doRoot()">Square Root of A</button>
+  <button onclick="doRoot()">Square Root of B</button>
+  <button onclick="doCube()">Cube of A</button>
+  <button onclick="doCube()">Cube of B</button>
+
+  <h3>Result: <span id="result"></span></h3>
+
+  <script>
+    function getA() {
+      return Number(document.getElementById("a").value);
+    }
+
+    function getAB() {
+      return {
+        a: Number(document.getElementById("a").value),
+        b: Number(document.getElementById("b").value)
+      };
+    }
+
+    function doAdd() {
+      const { a, b } = getAB();
+      document.getElementById("result").textContent = a + b;
+    }
+
+    function doSub() {
+      const { a, b } = getAB();
+      document.getElementById("result").textContent = a - b;
+    }
+
+    function doMul() {
+      const { a, b } = getAB();
+      document.getElementById("result").textContent = a * b;
+    }
+
+    function doDiv() {
+      const { a, b } = getAB();
+      if (b === 0) {
+        document.getElementById("result").textContent = "Cannot divide by zero";
+      } else {
+        document.getElementById("result").textContent = a / b;
+      }
+    }
+
+    function doLog() {
+      const a = getA();
+      if (a <= 0) {
+        document.getElementById("result").textContent = "Log not defined for ≤ 0";
+      } else {
+        document.getElementById("result").textContent = Math.log10(a);
+      }
+    }
+
+    function doRoot() {
+      const a = getA();
+      const b = getB();
+      if (a < 0) {
+        document.getElementById("result").textContent = "Root not defined for negative";
+      } else {
+        document.getElementById("result").textContent = Math.sqrt(a);
+      }
+    }
+
+    function doCube() {
+      const a = getA();
+      const b = getB();
+      document.getElementById("result").textContent = Math.pow(a, 3);
+    }
+  </script>
+</body>
+</html>
