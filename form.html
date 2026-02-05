@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .form-container { max-width: 500px; background: white; padding: 30px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; background-color: #28a745; color: white; padding: 12px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .error { color: red; font-size: 12px; margin-top: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Job Application</h2>
+    <form id="appForm">
+        <!-- Personal Information -->
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="John Doe" required>
+        
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@mail.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="1234567890">
+
+        <!-- Selection Fields -->
+        <label for="position">Position Applied For</label>
+        <select id="position">
+            <option value="developer">Web Developer</option>
+            <option value="designer">UI/UX Designer</option>
+            <option value="manager">Project Manager</option>
+        </select>
+
+        <label for="experience">Years of Experience</label>
+        <input type="number" id="experience" min="0" max="50">
+
+        <!-- Long Text Input -->
+        <label for="message">Why should we hire you?</label>
+        <textarea id="message" rows="4"></textarea>
+
+        <button type="submit">Submit Application</button>
+        <p id="formMsg" style="text-align:center; margin-top:15px;"></p>
+    </form>
+</div>
+
+<script>
+    document.getElementById('appForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload
+        
+        const name = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const msgBox = document.getElementById('formMsg');
+
+        // Simple Validation Example
+        if (name.length < 3) {
+            msgBox.style.color = "red";
+            msgBox.innerText = "Please enter a valid full name.";
+        } else {
+            msgBox.style.color = "green";
+            msgBox.innerText = "Thank you, " + name + "! Your application was sent.";
+            this.reset(); // Clear form after success
+        }
+    });
+</script>
+
+</body>
+</html>
